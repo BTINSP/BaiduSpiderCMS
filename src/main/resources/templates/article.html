@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+    <div th:replace="~{include/headres :: keywords}"></div>
+    <!-- LOADING STYLESHEETS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:replace="~{include/headres :: headres}"></div>
+    <!-- END TOP NAVIGATION -->
+    <!-- SEARCH FIELD AREA -->
+    <div th:replace="~{include/headres :: search}"></div>
+    <!-- END SEARCH FIELD AREA -->
+    <!-- MAIN SECTION -->
+    <div class="container featured-area-default padding-30">
+        <div class="row">
+            <!-- ARTICLE OVERVIEW SECTION -->
+            <div class="col-md-8 padding-20">
+                <div class="row">
+                    <!-- BREADCRUMBS -->
+                    <div class="breadcrumb-container">
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="/index.html">
+                                    <i class="fa fa-home"></i>
+                                </a>
+                            </li>
+                            <li class="active">文章</li>
+                        </ol>
+                    </div>
+                    <!-- END BREADCRUMBS -->
+                    <!-- ARTICLES -->
+                    <hr class="style-three">
+
+
+                    <div class="panel panel-default" th:each="article:${articles}">
+                        <div class="article-heading-abb">
+                            <a th:text="${article.getTitle()}" th:href="'/to/' + ${article.getSource()} + '/' + ${article.getPath()}">
+                                <i class="fa fa-pencil-square-o"></i> title</a>
+                        </div>
+                        <div class="article-content">
+                            <p class="block-with-text" th:text="${article.getContent()}">
+                              content
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- END ARTICLES -->
+
+                </div>
+            </div>
+            <!-- END ARTICLES OVERVIEW SECTION-->
+            <!-- SIDEBAR STUFF -->
+            <div class="col-md-4 padding-20">
+                <div th:replace="~{include/headres :: support}"></div>
+
+
+                <div class="row margin-top-20">
+                    <div class="col-md-12">
+                        <div class="fb-heading-small">
+                            热门推荐
+                        </div>
+                        <hr class="style-three">
+                        <div class="fat-content-small padding-left-10">
+                            <ul>
+                                <li th:each="keyword:${randomKeywords}">
+                                    <i class="fa fa-file-text-o" ></i>
+                                    <a th:text="${keyword.getKeyword()}" th:href="'/article/' + ${keyword.getKeyword() + '.html'}"> keyword </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- END POPULAR TAGS (SHOW MAX 20 TAGS) -->
+            </div>
+            <!-- END SIDEBAR STUFF -->
+        </div>
+    </div>
+    <!-- END MAIN SECTION -->
+
+
+    <div th:replace="~{include/footer :: footer}"></div>
+
+    <!-- LOADING MAIN JAVASCRIPT -->
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

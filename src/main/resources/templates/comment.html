@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+    <div th:replace="~{include/headres :: keywords}"></div>
+    <!-- LOADING STYLESHEETS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:replace="~{include/headres :: headres}"></div>
+    <!-- END TOP NAVIGATION -->
+    <!-- SEARCH FIELD AREA -->
+    <div th:replace="~{include/headres :: search}"></div>
+    <!-- END SEARCH FIELD AREA -->
+    <!-- MAIN SECTION -->
+    <div class="container featured-area-default padding-30">
+        <div class="row">
+            <div class="col-md-8 padding-20">
+                <div class="row">
+                    <!-- BREADCRUMBS -->
+                    <div class="breadcrumb-container">
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="index.html">
+                                    <i class="fa fa-home"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a>联系我</a>
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- END BREADCRUMBS -->
+                    <!-- ARTICLE  -->
+                    <div class="panel panel-default">
+                       
+               
+              
+                        <!-- END FIRST LEVEL COMMENT 2 -->
+                        <hr class="style-three">
+                        <!-- LEAVE A REPLY SECTION -->
+                        <div class="panel-transparent">
+                            <div class="article-heading">
+                                <i class="fa fa-comment-o"></i> 联系我
+                            </div>
+                            <form method="post" class="comment-form" action="/comment">
+                                <label>名称:</label>
+                                <input type="text" name="name">
+                                <br>
+                                <label>邮件:</label>
+                                <input type="text" name="email">
+                                <br>
+                                <label>内容:</label>
+                                <textarea rows="5" cols="2" name="comment"></textarea>
+
+                                <button type="submit" value="Submit" class="btn btn-wide btn-primary">提交</button>
+                            </form>
+                        </div>
+                        <!-- END LEAVE A REPLY SECTION -->
+                    </div>
+                    <!-- END COMMENTS -->
+                </div>
+
+            </div>
+
+
+            <!-- END SIDEBAR STUFF -->
+        </div>
+    </div>
+    <!-- END MAIN SECTION -->
+
+    <!-- FOOTER -->
+    <div th:replace="~{include/footer :: footer}"></div>
+    <!-- END COPYRIGHT INFO -->
+
+    <!-- LOADING MAIN JAVASCRIPT -->
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

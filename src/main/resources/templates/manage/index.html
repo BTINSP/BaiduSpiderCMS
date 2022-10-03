@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Manage</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="/assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/modules/fontawesome/css/all.min.css">
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="/assets/modules/jqvmap/dist/jqvmap.min.css">
+  <link rel="stylesheet" href="/assets/modules/weather-icon/css/weather-icons.min.css">
+  <link rel="stylesheet" href="/assets/modules/weather-icon/css/weather-icons-wind.min.css">
+  <link rel="stylesheet" href="/assets/modules/summernote/summernote-bs4.css">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA --></head>
+
+<body class="sidebar-mini">
+<div id="app">
+  <div class="main-wrapper main-wrapper-1">
+    <div class="navbar-bg"></div>
+
+    <div th:replace="~{manage/include/headres :: nav}"></div>
+
+    <div class="main-sidebar sidebar-style-2">
+      <div th:replace="~{manage/include/side :: side}"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <section class="section">
+        <div class="section-header">
+          <h1>Index</h1>
+        </div>
+
+        <h2 class="section-title">爬虫状态</h2>
+
+        <div class="row">
+
+
+          <div class="col-12 col-md-6 col-lg-6" th:each="status:${statusList}">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4 th:text="${status.getName()}">BaiduSpider</h4>
+                <div class="card-header-action">
+                  <div class="btn-group">
+                    <a href="#" th:href="'/manage/startSpider/' + ${status.getName()}" class="btn btn-primary">开启</a>
+                    <a href="#" th:href="'/manage/stopSpider/' + ${status.getName()}" class="btn btn-danger">关闭</a>
+                    <a href="#" th:href="'/manage/restartSpider/' + ${status.getName()}" class="btn btn-warning">重启</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <table class="table table-bordered table-md" style="text-align: center">
+                  <tr>
+                    <th>状态</th>
+                    <th>线程</th>
+                    <th>页面总数</th>
+                    <th>成功总数</th>
+                    <th>启动时间</th>
+                  </tr>
+                  <tr>
+
+                    <td th:switch="${status.getStatus()}">
+                      <div th:case="Init" class="badge badge-light">Init</div>
+                      <div th:case="Running" class="badge badge-success">Running</div>
+                      <div th:case="Stopped" class="badge badge-danger">Stopped</div>
+                    </td>
+                    <td th:text="${status.getThread()}"></td>
+                    <td th:text="${status.getTotalPageCount()}"></td>
+                    <td th:text="${status.getSuccessPageCount()}"></td>
+                    <td th:text="${status.getStartTime()}"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </section>
+    </div>
+    <footer class="main-footer">
+      <div class="footer-right">
+
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- General JS Scripts -->
+<script src="/assets/modules/jquery.min.js"></script>
+<script src="/assets/modules/popper.js"></script>
+<script src="/assets/modules/tooltip.js"></script>
+<script src="/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="/assets/modules/moment.min.js"></script>
+<script src="/assets/js/stisla.js"></script>
+
+<!-- JS Libraies -->
+<script src="/assets/modules/simple-weather/jquery.simpleWeather.min.js"></script>
+<script src="/assets/modules/chart.min.js"></script>
+<script src="/assets/modules/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="/assets/modules/summernote/summernote-bs4.js"></script>
+<script src="/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+
+<!-- Page Specific JS File -->
+<script src="/assets/js/page/index-0.js"></script>
+
+<!-- Template JS File -->
+<script src="/assets/js/scripts.js"></script>
+<script src="/assets/js/custom.js"></script>
+</body>
+</html>
