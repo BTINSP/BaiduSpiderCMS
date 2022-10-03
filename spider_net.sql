@@ -1,18 +1,4 @@
-/*
- Navicat Premium Data Transfer
 
- Source Server         : 82.157.64.59_3307
- Source Server Type    : MySQL
- Source Server Version : 80030
- Source Host           : 82.157.64.59:3307
- Source Schema         : spider_net
-
- Target Server Type    : MySQL
- Target Server Version : 80030
- File Encoding         : 65001
-
- Date: 03/10/2022 21:11:39
-*/
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
