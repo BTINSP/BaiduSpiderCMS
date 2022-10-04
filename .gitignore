@@ -7,6 +7,8 @@ application.log
 mvnw
 mvnw.cmd
 
+src/main/resources/application-pro.yml
+
 
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
